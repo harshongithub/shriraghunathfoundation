@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Our New Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px rgba(255, 255, 255, 0.1) solid;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .time-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+        }
+
+        .notify-box {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        input[type="email"] {
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            width: 250px;
+            transition: border 0.3s;
+        }
+
+        input[type="email"]:focus {
+            border-color: var(--primary-color);
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .notify-box { flex-direction: column; }
+            input[type="email"] { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Something Big is Coming</h1>
+        <p>We're working hard to bring you a brand new experience. Stay tuned for our launch!</p>
+
+        <div class="countdown">
+            <div class="time-box">
+                <span class="time-value" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">Hours</span>
+            </div>
+            <div class="time-box">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">Mins</span>
+            </div>
+        </div>
+
+        <form class="notify-box" onsubmit="event.preventDefault(); alert('Thanks! We will notify you.');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+    </div>
+
+    <script>
+        // Set your launch date here
+        const launchDate = new Date().getTime() + (14 * 24 * 60 * 60 * 1000); // 14 days from now
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
