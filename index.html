@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shriraghunathfoundation | Digitized Manuscripts</title>
+    <title>Shriraghunathfoundation | Digital Manuscript Library</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;1,500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;1,500&family=Inter:wght@300;400&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -31,10 +31,9 @@
             color: var(--deep-maroon);
             text-align: center;
             padding: 20px;
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
-        /* Paper texture overlay */
         body::after {
             content: "";
             position: fixed;
@@ -49,117 +48,139 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+        }
+
+        /* Top Most Hindi Invocation */
+        .top-invocation {
+            font-family: 'Noto Serif Devanagari', serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--deep-maroon);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(20px, 5vw, 60px);
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-container img {
+            height: clamp(60px, 10vw, 90px);
+            width: auto;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15));
         }
 
         .temple-header {
             font-family: 'Cinzel', serif;
             font-size: clamp(0.75rem, 2.5vw, 1rem);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            opacity: 0.9;
         }
 
         .main-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.8rem, 8vw, 3.8rem); /* Responsive font sizing */
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.1;
             margin-bottom: 1rem;
-            word-wrap: break-word; /* Ensures long name doesn't break layout */
+            letter-spacing: 1px;
         }
 
         .divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .divider::before, .divider::after {
             content: "";
             height: 1px;
             flex-grow: 1;
-            max-width: 80px;
+            max-width: 120px;
             background: var(--deep-maroon);
             opacity: 0.4;
         }
 
         .divider-icon {
             margin: 0 15px;
-            width: 20px;
+            width: 24px;
             fill: var(--deep-maroon);
         }
 
         .sub-text {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.1rem, 4vw, 1.8rem);
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
             font-style: italic;
             margin-bottom: 1.5rem;
-            line-height: 1.4;
+            font-weight: 500;
         }
 
         .description {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            font-size: clamp(0.95rem, 3vw, 1.1rem);
-            line-height: 1.7;
-            padding: 0 10px;
-            color: rgba(74, 14, 14, 0.85);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            line-height: 1.8;
+            padding: 0 15px;
+            color: rgba(74, 14, 14, 0.9);
+        }
+
+        .collab-section {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .collab-label {
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
         }
 
         .status-badge {
             display: inline-block;
-            margin-top: 2.5rem;
-            padding: 8px 20px;
-            border: 1.5px solid var(--deep-maroon);
+            margin-top: 3.5rem;
+            padding: 15px 30px;
+            border: 2px solid var(--deep-maroon);
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 700;
             letter-spacing: 2px;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
         }
 
-        /* Responsive adjustments for the background temple silhouette */
-        .temple-svg {
-            position: absolute;
-            bottom: -5vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150%; /* Larger than screen to ensure it covers width */
-            opacity: 0.04;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Mobile specific spacing */
         @media (max-width: 480px) {
-            body {
-                padding: 15px;
-                align-items: flex-start; /* Better for long content on small screens */
-                padding-top: 15vh;
-            }
-            .divider::before, .divider::after {
-                max-width: 40px;
-            }
-            .main-title {
-                margin-bottom: 0.5rem;
-            }
+            .logo-container { gap: 30px; }
+            body { padding-top: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <svg class="temple-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYEnd slice" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" d="M400 20 L440 60 H360 Z M350 60 H450 V180 H350 Z M300 100 H500 V180 H300 Z M200 140 H600 V180 H200 Z" />
-    </svg>
-
     <div class="container">
-        <div class="temple-header">Shri Raghunath Bhatt Goswami Peeth</div>
+        <div class="top-invocation">
+            श्री मद्राधामदन मोहनौ जयतः <br> जय गौर
+        </div>
+
+        <div class="logo-container">
+            <img src="media/haveli.png" alt="Shri Raghunath Foundation Logo">
+            <img src="media/brc.png" alt="Bhaktivedanta Research Center Logo">
+        </div>
+
+        <div class="temple-header">Shri Raghunath Bhatt Goswami Peeth, Vrindavan</div>
         
-        <h1 class="main-title">Shriraghunath<wbr>foundation</h1>
+        <h1 class="main-title">Shriraghunathfoundation.org</h1>
         
         <div class="divider">
             <svg class="divider-icon" viewBox="0 0 24 24">
@@ -168,17 +189,23 @@
         </div>
 
         <div class="sub-text">
-            Preserving Sacred Knowledge for the Digital Age
+            Preserving Sacred Wisdom for the Digital Age
         </div>
 
         <p class="description">
-            Dedicated to the preservation and public sharing of ancient manuscripts. 
-            Our digital archives are being meticulously prepared to bring the wisdom 
-            of the <strong>Shri Raghunath Bhatt Goswami Peeth</strong> to seekers everywhere.
+            Dedicated to the preservation and global accessibility of ancient manuscripts. 
+            Through our digital library, we bring the profound literary heritage of the 
+            <strong>Bhatt Ji Ki Haveli</strong> to scholars and seekers worldwide.
         </p>
 
+        <div class="collab-section">
+            <span class="collab-label">In Collaboration With</span>
+            <strong>Bhaktivedanta Research Center, Kolkata</strong>
+        </div>
+
         <div class="status-badge">
-            Digital Archives Opening Soon
+            Official Launch: January 23, 2026 | Vasant Panchami <br>
+            <span style="font-size: 0.75rem; letter-spacing: 1px;">5:00 PM Onwards</span>
         </div>
     </div>
 
