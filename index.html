@@ -25,6 +25,7 @@
             background: radial-gradient(circle at center, #FFB366 0%, #FF9933 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* Changed to column to accommodate navbar */
             align-items: center;
             justify-content: center;
             font-family: 'Inter', sans-serif;
@@ -44,12 +45,53 @@
             z-index: 1;
         }
 
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background: rgba(74, 14, 14, 0.05);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(74, 14, 14, 0.1);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--deep-maroon);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--deep-maroon);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
         .container {
             position: relative;
             z-index: 2;
             width: 100%;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 80px auto 40px auto; /* Added top margin for navbar */
         }
 
         /* Top Most Hindi Invocation */
@@ -163,10 +205,17 @@
         @media (max-width: 480px) {
             .logo-container { gap: 30px; }
             body { padding-top: 40px; }
+            .navbar { gap: 15px; padding: 1rem; }
+            .navbar a { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+    </nav>
 
     <div class="container">
         <div class="top-invocation">
