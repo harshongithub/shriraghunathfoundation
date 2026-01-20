@@ -6,13 +6,12 @@
     <title>About Us | Shriraghunathfoundation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;1,500&family=Inter:wght@300;400&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --saffron: #FF9933;
             --deep-maroon: #4A0E0E;
-            --gold-leaf: #D4AF37;
         }
 
         * {
@@ -22,27 +21,18 @@
         }
 
         body {
+            /* Restored Old Design Background */
             background: radial-gradient(circle at center, #FFB366 0%, #FF9933 100%);
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
             color: var(--deep-maroon);
-            text-align: center;
-            padding: 60px 20px;
+            line-height: 1.6;
+            padding-top: 100px;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Border effect matching the index page */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
-            border: 2px solid var(--deep-maroon);
-            outline: 6px double var(--deep-maroon);
-            outline-offset: -12px;
-            pointer-events: none;
-            z-index: 10;
-        }
-
+        /* Restored Paper Texture Overlay */
         body::after {
             content: "";
             position: fixed;
@@ -53,129 +43,128 @@
             z-index: 1;
         }
 
+        /* Simple Navigation Bar - Glassmorphism style to match gradient */
+        .navbar {
+            position: fixed;
+            top: 0; 
+            width: 100%; 
+            padding: 1.2rem;
+            display: flex; 
+            justify-content: center; 
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(74, 14, 14, 0.1);
+            z-index: 100;
+        }
+
+        .navbar a {
+            text-decoration: none; 
+            color: var(--deep-maroon);
+            font-family: 'Cinzel', serif; 
+            font-weight: 700; 
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
         .container {
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-        .flower-ornament {
-            width: 50px;
-            height: 50px;
-            fill: var(--deep-maroon);
-            opacity: 0.8;
-            margin: 0 auto 20px;
-        }
-
-        .top-invocation {
-            font-family: 'Noto Serif Devanagari', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .page-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .content-section {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 40px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-            margin-bottom: 40px;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .content-section h2 {
-            font-family: 'Cinzel', serif;
-            margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        /* Map Styling */
+        /* Top Invocation in Hindi */
+        .top-invocation {
+            font-family: 'Noto Serif Devanagari', serif;
+            font-size: 1.3rem; 
+            color: var(--deep-maroon);
+            margin-bottom: 2rem; 
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--deep-maroon);
+            margin-bottom: 2rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .text-content {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            margin-bottom: 3rem;
+        }
+
+        .text-content p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Map Section */
         .map-container {
             width: 100%;
             height: 450px;
-            border: 4px double var(--deep-maroon);
-            margin-top: 30px;
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(74, 14, 14, 0.2);
+            margin-top: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .nav-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: var(--deep-maroon);
-            text-decoration: none;
+        footer {
+            margin-top: 60px;
+            padding-bottom: 40px;
             font-family: 'Cinzel', serif;
-            font-weight: 700;
-            border-bottom: 1px solid var(--deep-maroon);
-            padding-bottom: 5px;
-            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            color: var(--deep-maroon);
+            opacity: 0.8;
+            letter-spacing: 1px;
         }
-
-        .nav-link:hover { opacity: 0.7; }
 
         @media (max-width: 480px) {
-            .container { padding: 10px; }
-            .content-section { padding: 20px; }
+            .navbar { gap: 20px; }
             .map-container { height: 300px; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+    </nav>
+
     <div class="container">
-        <svg class="flower-ornament" viewBox="0 0 24 24">
-            <path d="M12,22C12,22 13,18 13,15C13,12 12,12 12,12C12,12 11,12 11,15C11,18 12,22 12,22M12,2C12,2 11,6 11,9C11,12 12,12 12,12C12,12 13,12 13,9C13,6 12,2 12,2M22,12C22,12 18,11 15,11C12,11 12,12 12,12C12,12 12,13 15,13C18,13 22,12 22,12M2,12C2,12 6,13 9,13C12,13 12,12 12,12C12,12 12,11 9,11C6,11 2,12 2,12M19.07,4.93C19.07,4.93 16.24,6.34 14.12,8.46C12,10.59 12,12 12,12C12,12 13.41,12 15.54,9.88C17.66,7.76 19.07,4.93 19.07,4.93M4.93,19.07C4.93,19.07 7.76,17.66 9.88,15.54C12,13.41 12,12 12,12C12,12 10.59,12 8.46,14.12C6.34,16.24 4.93,19.07 4.93,19.07M19.07,19.07C19.07,19.07 17.66,16.24 15.54,14.12C13.41,12 12,12 12,12C12,12 12,13.41 14.12,15.54C16.24,17.66 19.07,19.07 19.07,19.07M4.93,4.93C4.93,4.93 6.34,7.76 8.46,9.88C10.59,12 12,12 12,12C12,12 12,10.59 9.88,8.46C7.76,6.34 4.93,4.93 4.93,4.93Z" />
-        </svg>
+        <div class="top-invocation">श्रीमद्राधामदनमोहनौ जयतः <br> जय गौर</div>
 
-        <div class="top-invocation">
-            श्रीमद्राधामदनमोहनौ जयत: <br> जय गौर
-        </div>
+        <h1>About Us</h1>
 
-        <h1 class="page-title">About Us</h1>
-
-        <div class="content-section">
-            <h2>Our Heritage</h2>
+        <div class="text-content">
             <p>
-                The <strong>Shri Raghunath Bhatt Goswami Peeth</strong> (Bhatt Ji Ki Haveli) in Vrindavan is a cornerstone of Gaudiya Vaishnavism. For centuries, it has served as a sanctuary for sacred wisdom and ancient manuscripts that detail the philosophical and devotional traditions of the lineage.
-            </p>
-            <br>
-            <p>
-                Our mission at <strong>Shriraghunathfoundation.org</strong> is to preserve this priceless heritage. In collaboration with the <strong>Bhaktivedanta Research Center, Kolkata</strong>, we have undertaken the monumental task of digitizing these manuscripts, ensuring that the legacy of Shri Raghunath Bhatt Goswami is available to scholars, devotees, and seekers across the globe for generations to come.
+                The <strong>Shri Raghunath Bhatt Goswami Peeth</strong> (Bhatt Ji Ki Haveli) in Vrindavan is a cornerstone of spiritual and literary heritage. 
+                Our foundation is dedicated to the preservation, digitization, and global accessibility of sacred manuscripts that have been safeguarded for centuries.
             </p>
         </div>
 
-        <h2>Find Us</h2>
+        <h2 style="font-family: 'Cinzel', serif; color: var(--deep-maroon); margin-bottom: 15px; letter-spacing: 2px;">Our Location</h2>
+        
         <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.123!2d77.698!3d27.583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39736f9037803737%3A0xe74f5f59048a6096!2sBhatt%20Ji%20Ki%20Haveli%2C%20Vrindavan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442.04985278626776!2d77.69264350104625!3d27.581162341668758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39736e36967c1011%3A0x1ed74ba0ea7714f5!2sShri%20Raghunath%20Bhatt%20Goswami%20Peeth%20%2F%20Bhatt%20Ji%20Ki%20Haveli!5e0!3m2!1sen!2sin!4v1768883940749!5m2!1sen!2sin"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <a href="index.html" class="nav-link">Return to Home</a>
-
-        <svg class="flower-ornament" style="margin-top: 40px;" viewBox="0 0 24 24">
-            <path d="M12,22C12,22 13,18 13,15C13,12 12,12 12,12C12,12 11,12 11,15C11,18 12,22 12,22M12,2C12,2 11,6 11,9C11,12 12,12 12,12C12,12 13,12 13,9C13,6 12,2 12,2M22,12C22,12 18,11 15,11C12,11 12,12 12,12C12,12 12,13 15,13C18,13 22,12 22,12M2,12C2,12 6,13 9,13C12,13 12,12 12,12C12,12 12,11 9,11C6,11 2,12 2,12M19.07,4.93C19.07,4.93 16.24,6.34 14.12,8.46C12,10.59 12,12 12,12C12,12 13.41,12 15.54,9.88C17.66,7.76 19.07,4.93 19.07,4.93M4.93,19.07C4.93,19.07 7.76,17.66 9.88,15.54C12,13.41 12,12 12,12C12,12 10.59,12 8.46,14.12C6.34,16.24 4.93,19.07 4.93,19.07M19.07,19.07C19.07,19.07 17.66,16.24 15.54,14.12C13.41,12 12,12 12,12C12,12 12,13.41 14.12,15.54C16.24,17.66 19.07,19.07 19.07,19.07M4.93,4.93C4.93,4.93 6.34,7.76 8.46,9.88C10.59,12 12,12 12,12C12,12 12,10.59 9.88,8.46C7.76,6.34 4.93,4.93 4.93,4.93Z" />
-        </svg>
+        <footer>
+            Shriraghunathfoundation.org © 2026
+        </footer>
     </div>
 
 </body>
